@@ -23,7 +23,7 @@ optional arguments:
 ### E.g. Usage:
 
 ```
-$python conda_env_packages_search.py --packages cv2 onnxruntime --onnxruntime
+$ python conda_env_packages_search.py --packages cv2 onnxruntime --onnxruntime
 ```
 
 Output:
