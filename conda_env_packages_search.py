@@ -5,6 +5,8 @@ from itertools import repeat
 import time
 import tqdm as tqd
 from tqdm import tqdm
+import platform
+
 
 def get_conda_envs():
     cmd = 'conda env list'
@@ -20,9 +22,9 @@ def get_conda_envs():
             continue
         envs.append(line.split()[0])
     return envs
-
+#
 def check_env_pckg(env, package):
-    cmd = 'conda list -n {} | grep {}'.format(env, package)
+    cmd = 'conda list -n {} | {} {}'.format(env, 'findstr' if platform.system() == 'Windows' else 'grep' ,package)
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     lines = p.stdout.readlines()
     if len(lines) > 0:
